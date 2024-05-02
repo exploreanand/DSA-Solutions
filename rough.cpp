@@ -1,115 +1,21 @@
-// Multiple Parenthesis Matching
 #include <iostream>
+#include <string>
+#include<vector>
 using namespace std;
 
-class stack
-{
-    public:
-    int size;
-    int top;
-    char * arr;
-    stack(int s)
-    {
-        size = s;
-        top = -1;
-        arr = new char[size];
-    }
-};
-
-int push(stack * s,char a)
-{
-    if (s->top == s->size-1)
-    {
-        return 0;
-    }
-    s->top++;
-    s->arr[s->top]=a;
-    return 1;
-}
-char pop(stack * s)
-{
-    if (s->top == -1)
-    {
-        return 0;
-    }
-    char x = s->arr[s->top];
-    s->top--;
-    return x;
-}
-
-int parenthesis(string exp)
-{
-    int size = 100;
-    stack * s = new stack(size);
-    char a = '(', b = '{',c = '[';
-    for (int i = 0; i < size; i++)
-    {
-        if (exp[i]==a)
-        {
-            push(s,a);
-        }
-        else if (exp[i]==b)
-        {
-            push(s,b);
-        }
-        else if (exp[i]==c)
-        {
-            push(s,c);
-        }
-        else if (exp[i]==')')
-        {
-            if (s->arr[s->top]=='(')
-            {
-                pop(s);
-            }
-            else
-            {
-                return 0;
-            }
-        }
-        else if (exp[i]=='}')
-        {
-            if (s->arr[s->top]=='{')
-            {
-                pop(s);
-            }
-            else
-            {
-                return 0;
-            }  
-        }
-        else if (exp[i]==']')
-        {
-            if (s->arr[s->top]=='[')
-            {
-                pop(s);
-            }
-            else
-            {
-                return 0;
-            } 
-        }   
-    }
-    if (s->top == -1)
-    {
-        return 1;
-    }
-    else{
-        return 0;
-    }
-}
-
-int main()
-{
+int main(){
+    vector<int> nums;
     string s;
-    cin >> s;;
-    if (parenthesis(s))
+    cin>>s;
+
+    for (int i = 0; i < s.length(); i++)
     {
-        cout<<"true"<<endl;
+        if (isdigit(s[i]))
+        {
+           nums.push_back(s[i]);
+        }
     }
-    else{
-        cout<<"false"<<endl;
-    }
-    
+    cout<<nums.size()<<endl;
+    cout<<nums.capacity()<<endl;
     return 0;
 }
