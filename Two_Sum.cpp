@@ -21,11 +21,3 @@ public:
         return result;
     }
 };
-
-int main() {
-    vector<int> nums;
-
-    
-        
-    return 0;
-}
