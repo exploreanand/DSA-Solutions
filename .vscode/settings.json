@@ -8,6 +8,8 @@
         "initializer_list": "cpp",
         "string_view": "cpp",
         "unordered_map": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "ostream": "cpp",
+        "iostream": "cpp"
     }
 }
