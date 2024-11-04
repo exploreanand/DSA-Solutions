@@ -21,5 +21,6 @@ int main()
 {
     Solution sol;
     int val = sol.reverse(1534235189);
+    cout<<val<<endl;
     return 0;
 }
