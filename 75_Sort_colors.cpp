@@ -1,34 +1,17 @@
 #include<iostream>
 #include<vector>
+
 using namespace std;
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
         int n = nums.size();
-        int i=0;
-        int j=0;
-        for (int iter = 0; iter < n; iter++){
-            if (nums[iter]==0){
-                i++;
-            }
-            else if(nums[iter]==1){
-                j++;
-            }
+        int l=0;int m=0;int r=n-1;
+        while(m<=r){
+            if(nums[m]==0){swap(nums[l],nums[m]);l++;m++;}
+            else if(nums[m]==1){m++;}
+            else{swap(nums[m],nums[r]);r--;}
         }
-        for (int iter = 0; iter < n; iter++){
-            if (i>0){
-                nums[iter]=0;
-                i--;
-            }
-            else if(i==0 && j>0){
-                nums[iter]=1;
-                j--;
-            }
-            else{
-                nums[iter]=2;
-            }
-        }
-        
     }
 };
 int main(){
