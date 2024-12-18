@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-    int num = 879;
-    cout<<num[0];
+    int num = 0;
+    cout<<num%2;
     return 0;
 }
