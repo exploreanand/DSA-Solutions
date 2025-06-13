@@ -6,8 +6,8 @@ class Solution
 public:
   void setZeroes(vector<vector<int>> &matrix)
   {
-    int m = size(matrix);
-    int n = size(matrix[0]);
+    int m = matrix.size();
+    int n = matrix[0].size();
     vector<pair<int, int>> rc;
     for (int i = 0; i < m; i++)
     {
