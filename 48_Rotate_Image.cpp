@@ -1,47 +1,28 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
-// (0,0),(0,1),(0,2)
-// (1,0)       (1,2)
-// (2,0),(2,1),(2,2)
-
 class Solution
 {
 public:
-  void rotate(vector<vector<int>> &matrix)
-  {
-    int n = matrix.size();
-    int i = 0;
-    int j = 0;
-    for (int c = 0; c < n / 2; c++)
+    void rotate(vector<vector<int>> &matrix)
     {
-      i = c;
-      j = c;
-      for (int b = 0; b < n - 1 - 2*c; b++)
-      {
+        int n = matrix.size();
+        // Transpose the matrix
+        for (int i = 0; i < n; i++)
         {
-          int temp = matrix[i][j];
-          int temp2;
-          for (int a = 0; a < 4; a++)
-          {
-            int i2 = i;
-            i = j;
-            j = n - 1 - i2;
-
-            temp2 = matrix[i][j];
-            cout << temp2 << endl;
-            matrix[i][j] = temp;
-            cout << matrix[i][j] << endl;
-            temp = temp2;
-          }
+            for (int j = i+1; j < n; j++)
+            {
+                swap(matrix[i][j],matrix[j][i]);
+            }
         }
-        i++;
-      }
+        // Reverse the matrix
+        for (int i = 0; i < n; i++)
+        {
+            reverse(matrix[i].begin(), matrix[i].end());
+        }
+        
     }
-  }
 };
-
 int main()
 {
   Solution obj;
