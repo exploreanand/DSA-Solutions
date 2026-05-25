@@ -1,63 +1,31 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+
 class Solution {
-    vector<vector<int>> result;
-    int f = 0;
-    int l = 0;
-    int i = 0;
-    int j = 0;
 public:
+
     vector<vector<int>> generate(int numRows) {
-        if (numRows == 0)
-        {
-            return result;
-        }
-        
-        if (numRows == 1)
-        {
-            vector<int> row = {1};
-            result.insert(result.begin(), row);
-            return result;
-        }
-        
-        if (numRows == 2)
-        {
-            vector<int> row = {1};
-            result.insert(result.begin(), row);
-            vector<int> row2 = {1, 1};
-            result.insert(result.end(), row2);
-            return result;
-        }
-
-        if (numRows > 2)
-        {
-            vector<int> row = {1};
-            result.insert(result.begin(), row);
-            vector<int> row2 = {1, 1};
-            result.insert(result.end(), row2);
-
-            void pascal(int numRows){
-                vector<int> row = {1};
-                result.insert(result.begin(), row);
-                for (int i = 0; i < count; i++)
-                {
-                    /* code */
-                }
-                
+        vector<vector<int>> triangle;
+        for(int i = 0; i<numRows; i++){
+            vector<int> row(i + 1, 1);
+            for(int j = 1; j<i; j++){
+                row[j]=triangle[i-1][j-1]+triangle[i-1][j];
             }
+            triangle.push_back(row);
         }
-        
-        return result;
+        return triangle;
     }
 };
-int main()
-{
-    Solution obj;
-    vector<vector<int>> result = obj.generate(2);
 
-    for (const auto& row : result) {
-        for (int val : row) {
+int main() {
+
+    Solution obj;
+
+    vector<vector<int>> ans = obj.generate(5);
+
+    for(auto row : ans) {
+        for(auto val : row) {
             cout << val << " ";
         }
         cout << endl;
