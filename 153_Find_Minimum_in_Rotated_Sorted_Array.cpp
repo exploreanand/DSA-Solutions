@@ -9,7 +9,7 @@ public:
         int high = n - 1;
         while(low<=high){
             int mid = low + (high - low)/2;
-            if(nums[low] <= nums[mid] && nums[mid] <= nums[high]){
+            if(nums[low] <= nums[high]){
                 return nums[low];
             }
             else{
