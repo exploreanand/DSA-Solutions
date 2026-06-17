@@ -4,7 +4,7 @@ using namespace std;
 class Solution {
 public:
     bool accepted_divisor(vector<int>& nums, int threshold, int mid){
-        int sum = 0;
+        long long sum = 0;
         int n = nums.size();
         for(int i = 0; i < n; i++){
             sum += ((long long)nums[i]+mid-1)/mid;
