@@ -1,6 +1,17 @@
-#include <unordered_map>
+#include <iostream>
+using namespace std;
 
-int main() {
-    std::unordered_map<int, int> mp;
-    return mp.contains(1);
+int main()
+{
+    string a = "abhinav";
+    string b = "abhinav anand";
+
+    if(a == b){
+        cout<<"Correct";
+    }
+    else{
+        cout<<"Not Correct";
+    }
+
+    return 0;
 }
