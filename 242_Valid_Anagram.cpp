@@ -5,16 +5,17 @@ using namespace std;
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        if(s.size() != t.size()){return false;}
+        int n = s.size();
+        int m = t.size();
+        if(n != m){return false;}
 
         vector<int> count(26, 0);
 
-        for(char ch : s){
-            count[ch - 'a']++;
+        for(int i = 0; i < n; i++){
+            count[s[i] - 'a']++;
+            count[t[i] - 'a']--;
         }
-        for(char ch : t){
-            count[ch - 'a']--;
-        }
+
         for(int x : count){
             if(x != 0){
                 return false;
