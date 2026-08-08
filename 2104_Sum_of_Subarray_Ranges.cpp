@@ -7,8 +7,7 @@ public:
     vector<int> max_left, max_right;
     stack<int> st;
 
-    void pre_min(vector<int>& nums){
-        int n = nums.size();
+    void pre_min(vector<int>& nums, int n){
         for(int i = 0; i < n; i++){
             while(!st.empty() && nums[i] < nums[st.top()]){
                 st.pop();
@@ -23,8 +22,7 @@ public:
         }
     }
 
-    void post_min(vector<int>& nums){
-        int n = nums.size();
+    void post_min(vector<int>& nums, int n){
         for(int i = n - 1; i >= 0; i--){
             while(!st.empty() && nums[i] <= nums[st.top()]){
                 st.pop();
@@ -39,8 +37,7 @@ public:
         }
     }
 
-    void pre_max(vector<int>& nums){
-        int n = nums.size();
+    void pre_max(vector<int>& nums, int n){
         for(int i = 0; i < n; i++){
             while(!st.empty() && nums[i] > nums[st.top()]){
                 st.pop();
@@ -54,8 +51,7 @@ public:
             st.push(i);
         }
     }
-    void post_max(vector<int>& nums){
-        int n = nums.size();
+    void post_max(vector<int>& nums, int n){
         for(int i = n - 1; i >= 0; i--){
             while(!st.empty() && nums[i] >= nums[st.top()]){
                 st.pop();
@@ -82,16 +78,16 @@ public:
         min_right.resize(n);
         max_right.resize(n);
 
-        pre_min(nums);
+        pre_min(nums, n);
         clearStack();
 
-        pre_max(nums);
+        pre_max(nums, n);
         clearStack();
 
-        post_min(nums);
+        post_min(nums, n);
         clearStack();
 
-        post_max(nums);
+        post_max(nums, n);
         clearStack();
 
         long long maxSum = 0;
