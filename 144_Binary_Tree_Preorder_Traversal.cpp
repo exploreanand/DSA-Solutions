@@ -26,6 +26,37 @@ public:
     }
 };
 
+// Morris PreOrder Traversal
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        TreeNode* cur = root;
+        while(cur){
+            if(!cur->left){
+                ans.push_back(cur->val);
+                cur = cur->right;
+            }
+            else{
+                TreeNode* temp = cur->left;
+                while(temp->right && temp->right != cur){
+                    temp = temp->right;
+                }
+                if(temp->right == NULL){
+                    temp->right = cur;
+                    ans.push_back(cur->val);
+                    cur = cur->left;
+                }
+                else{
+                    temp->right = NULL;
+                    cur = cur->right;
+                }
+            }
+        }
+        return ans;
+    }
+};
+
 int main()
 {
 

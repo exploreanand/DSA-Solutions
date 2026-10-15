@@ -26,6 +26,37 @@ public:
     }
 };
 
+// Morris
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        TreeNode* cur = root;
+        while(cur){
+            if(!cur->left){
+                ans.push_back(cur->val);
+                cur = cur->right;
+            }
+            else{
+                TreeNode* temp = cur->left;
+                while(temp->right && temp->right != cur){
+                    temp = temp->right;
+                }
+                if(temp->right != cur){
+                    temp->right = cur;
+                    cur = cur->left;
+                }
+                else{
+                    temp->right = NULL;
+                    ans.push_back(cur->val);
+                    cur = cur->right;
+                }
+            }
+        }
+        return ans;
+    }
+};
+
 int main()
 {
 
