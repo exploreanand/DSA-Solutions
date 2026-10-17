@@ -32,6 +32,7 @@ private:
 
 public:
     int numIslands(vector<vector<char>>& grid) {
+        if (grid.empty() || grid[0].empty()) return 0;
         int n = grid.size();
         int m = grid[0].size();
         vector<vector<int>> isVal(n, vector<int>(m, 0));
