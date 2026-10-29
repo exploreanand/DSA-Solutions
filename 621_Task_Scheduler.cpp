@@ -34,6 +34,35 @@ public:
     }
 };
 
+// Optimal Solution - mathematically
+class Solution {
+public:
+    int leastInterval(vector<char>& tasks, int n) {
+        vector<int> freq(26, 0);
+        
+        for(auto tx : tasks){
+            freq[tx - 'A']++;
+        }
+
+        int maxFreq = 0;
+        int count = 0;
+        for(int i : freq){
+            if(i > 0){
+                if(i > maxFreq){
+                    maxFreq = i;
+                    count = 1;
+                }
+                else if(i == maxFreq){
+                    count++;
+                }
+            }
+        }
+        int intervals = (maxFreq - 1)*(n + 1) + count;
+        intervals = max((int)tasks.size(), intervals);
+        return intervals;
+    }
+};
+
 class Solution {
 public:
     int leastInterval(vector<char>& tasks, int n) {
