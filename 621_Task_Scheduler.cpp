@@ -34,6 +34,46 @@ public:
     }
 };
 
+class Solution {
+public:
+    int leastInterval(vector<char>& tasks, int n) {
+        vector<int> freq(26, 0);
+
+        for(auto tx : tasks){
+            freq[tx - 'A']++;
+        }
+        priority_queue<int> pq;
+
+        for(int i : freq){
+            if(i > 0){
+                pq.push(i);
+            }
+        }
+
+        queue<pair<int, int>> q;
+
+        int time = 0;
+
+        while(!pq.empty() || !q.empty()){
+            time++;
+            if(!q.empty() && q.front().second <= time){
+                pq.push(q.front().first);
+                q.pop();
+            }
+
+            if(!pq.empty()){
+                int remain = pq.top();
+                pq.pop();
+                remain--;
+                if(remain > 0){
+                    q.push({remain, time + n + 1});
+                }
+            }
+        }
+        return time;
+    }
+};
+
 int main()
 {
 
