@@ -7,7 +7,7 @@ class Solution {
     using pi = pair<int, pair<int, int>>;
 public:
     int swimInWater(vector<vector<int>>& grid) {
-        int min_time = 0;
+
         int n = grid.size();
         vector<vector<int>> least_head(n, vector(n, INT_MAX));
         priority_queue<pi, vector<pi>, greater<pi>> pq;
