@@ -1,3 +1,5 @@
+// Prim's Algorithm - Minimum Spanning Tree
+
 #include <iostream>
 using namespace std;
 
