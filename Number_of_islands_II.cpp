@@ -55,8 +55,11 @@ public:
         vector<int> ans;
         DSU obj(n * m);
 
-        for (const auto& [row, col] : A)
+        for (const auto& point : A)
         {
+            int row = point[0];
+            int col = point[1];
+
             if (isVis[row][col] == false)
             {
                 isVis[row][col] = true;
@@ -92,6 +95,24 @@ public:
 
 int main()
 {
+    Solution sol;
+    int n = 4, m = 5;
+    vector<vector<int>> operators = {
+        {0, 0},
+        {0, 0}, // Duplicate test
+        {1, 1},
+        {1, 0},
+        {3, 3}
+    };
+
+    vector<int> result = sol.numOfIslands(n, m, operators);
+
+    cout << "Islands count after each operation:" << endl;
+    for (int res : result)
+    {
+        cout << res << " ";
+    }
+    cout << endl;
 
     return 0;
 }
