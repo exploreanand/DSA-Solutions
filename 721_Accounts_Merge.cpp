@@ -58,22 +58,27 @@ public:
         }
 
         vector<vector<string>> ans(n);
-        for(auto it : mapp){
+        for(const auto& it : mapp){
             string mail = it.first;
             int root = obj.find(it.second);
-            ans[root].push_back(it.first);
+            ans[root].push_back(mail);
         }
+
         vector<vector<string>> res;
         for(int i = 0; i < n; i++){
             if(ans[i].empty()) continue;
             sort(ans[i].begin(), ans[i].end());
-            ans[i].insert(ans[i].begin(), accounts[i][0]);
-            res.push_back(ans[i]);
+
+            vector<string> temp;
+            temp.push_back(accounts[i][0]);
+            temp.insert(temp.end(), ans[i].begin(), ans[i].end());
+            res.push_back(move(temp));
         }
 
         return res;
     }
 };
+
 
 int main()
 {
